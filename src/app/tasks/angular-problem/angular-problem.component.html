@@ -1,4 +1,39 @@
-<div>
+<div class="block problem">
+    <div class="title">Problem description</div>
+
+    There is an API endpoint called /api/deadline which returns {{'{'}} secondsLeft: number {{'}'}} JSON object
+    containing the number of seconds left to some constant deadline date (deadline date never changes). Write an
+    Angular component (and any other Angular classes/functions if needed) that will retrieve data from backend and
+    will display “Seconds left to deadline: X” countdown timer (X should be updated every second). Please take your
+    time to write performance optimized code.
+
+</div>
+<div class="block comments">
+    <div class="title">Comments</div>
+
+    <li>using the OnPush strategy here to update the countdown in template on interval; I'd say its overkill for
+        this dumb component, but there was an emphasis on performance in the task so i thought it would be
+        appropriate</li>
+    <li>In general, I’d advice to restructure API to return a timestamp of a deadline instead of “secondsLeft” —
+        this way frontend would have more flexibility, e.g. can handle a timezone based on the browser or user’s
+        choice.</li>
+    <li>Also to avoid unnecessary API calls I would propose to add browser caching solution, and avoid requesting
+        API every time the component is loaded.</li>
+    <li>If it is necessary to have a precise amount of milliseconds to the deadline, the “secondsLeft” API will not
+        suffice. A solution would be to return a value in milliseconds or use the timestamp API solution I’ve
+        described above.</li>
+    <li><i>
+            N/B: In the job description there is a mention that Secfix is using or planning to use NgRX. That’s a
+            different story — i would definitely incorporate the timer into existing NgRX store and architecture,
+            but in the example below I’m considering this is a standalone “app” where NgRX would definitely be
+            overkill. If you’d be so kind to provide an example of NgRX-based project with more specific
+            requirement, i’d be happy to fulfill it!
+        </i></li>
+
+</div>
+
+<div class="block result">
+    <div class="title">Result</div>
     <ng-container *ngIf="loading">Loading..</ng-container>
     <ng-container *ngIf="!loading">
         Seconds left to deadline: {{ secondsLeft | number }}
