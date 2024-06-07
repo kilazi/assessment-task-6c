@@ -1,0 +1,6 @@
+<div>
+    <ng-container *ngIf="loading">Loading..</ng-container>
+    <ng-container *ngIf="!loading">
+        Seconds left to deadline: {{ secondsLeft | number }}
+    </ng-container>
+</div>
