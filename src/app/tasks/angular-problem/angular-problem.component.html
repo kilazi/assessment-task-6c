@@ -1,16 +1,13 @@
-<div class="block problem">
+<div class="block problem mat-typeography">
     <div class="title">Problem description</div>
-
     There is an API endpoint called /api/deadline which returns {{'{'}} secondsLeft: number {{'}'}} JSON object
     containing the number of seconds left to some constant deadline date (deadline date never changes). Write an
     Angular component (and any other Angular classes/functions if needed) that will retrieve data from backend and
     will display “Seconds left to deadline: X” countdown timer (X should be updated every second). Please take your
     time to write performance optimized code.
-
 </div>
-<div class="block comments">
+<div class="block comments mat-typeography">
     <div class="title">Comments</div>
-
     <li>using the OnPush strategy here to update the countdown in template on interval; I'd say its overkill for
         this dumb component, but there was an emphasis on performance in the task so i thought it would be
         appropriate</li>
@@ -32,7 +29,7 @@
 
 </div>
 
-<div class="block result">
+<div class="block result mat-typeography">
     <div class="title">Result</div>
     <ng-container *ngIf="loading">Loading..</ng-container>
     <ng-container *ngIf="!loading">

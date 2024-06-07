@@ -1,1 +1,79 @@
-<p>camera-problem works!</p>
+<div class="block problem mat-typeography">
+    <div class="title">Problem description</div>
+    [The author of this story problem is neither a photographer nor a hardware engineer, so please forgive any
+    implausibility.] Suppose we want to construct a versatile software camera by combining many inflexible hardware
+    cameras. Each hardware camera works well for a particular range of subject distances and for a particular range of
+    light levels. The software camera will measure the light level and subject distance of each shot and choose an
+    appropriate hardware camera to capture it. Write a function that takes the desired characteristics of the software
+    camera (range of subject distances and range of light levels that it should support) and a list of hardware cameras
+    with their respective characteristics, and tests whether that set of hardware cameras will suffice.
+
+</div>
+<div class="block comments mat-typeography">
+    <div class="title">Comments</div>
+    <p>
+        Will try to do my best considering that requirement is a little vague :)
+        If this was a real-case scenario, I’d like to have a chat about this, back-and-forth or a call to get some
+        answers
+        and, perhaps, propose a more sophisticated solution. An example questions would be:
+    </p>
+    <ul>
+        <li>
+            whats the purpose of this whole camera gig? is it for sensors, or a “3d photo” or something completely out
+            of
+            the existing solutions?
+        </li>
+        <li>
+            is there a turnkey solution -- or, at least, something related, that we can use which is already on the
+            market? from my previous experience, building an in-house software camera can result in unnecessary cost
+            both in time and development; perhaps, an existing turnkey solution can be used: as an example, a depth
+            camera — in particular one by Nvidia, RealSense — we have used those in my previous startup. it is pricy but
+            is a gamechanger in many ways. maybe one RealSense can be used to measure a necessary light/distance
+            combination for each position and then cheaper hardware can be installed using the obtained metrics
+        </li>
+        <li>
+            whats the I/O of this functionality? is it going to be input manually, or parsed from a database? in case
+            of
+            the
+            former, perhaps, we can have some .csv parser?
+        </li>
+    </ul>
+
+</div>
+
+<div class="block result mat-typeography">
+
+    <div class="row">        
+        <div class="col">
+            <div class="title">Result</div>
+            <div class="row">
+                <mat-form-field>
+                    <mat-label>Distance from</mat-label>
+                    <input matInput type="number" [(ngModel)]="requirements.distanceRange[0]">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Distance to</mat-label>
+                    <input matInput type="number" [(ngModel)]="requirements.distanceRange[1]">
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <mat-form-field>
+                    <mat-label>Light level from</mat-label>
+                    <input matInput type="number" [(ngModel)]="requirements.lightLevelRange[0]">
+                </mat-form-field>
+                <mat-form-field>
+                    <mat-label>Light level to</mat-label>
+                    <input matInput type="number" [(ngModel)]="requirements.lightLevelRange[1]">
+                </mat-form-field>
+            </div>
+            <div class="row">
+                <button mat-flat-button color="primary" (click)="getCameras()">Get Cameras</button>
+            </div>
+        </div>
+        <div class="col">
+            <div class="title">Suitable Cameras</div>
+            <div class="camera" *ngFor="let camera of suitableCameras">{{camera.name}}</div>
+            <div class="placeholder" *ngIf="!suitableCameras.length">No cameras found, please change params</div>
+        </div>
+    </div>
+</div>
